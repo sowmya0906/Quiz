@@ -30,7 +30,7 @@
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="http://127.0.0.1:8000/selectform" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            <a href="{{url('/selectform')}}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
                     @endif
                 </div>

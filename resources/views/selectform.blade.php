@@ -12,7 +12,7 @@
                         <label for="exampleFormControlSelect1">Select School/Individual</label>
                     <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                         <option value="">Select...</option>
-                        <option value="http://127.0.0.1:8000/individual/register">Individual</option>
+                    <option value="{{route('individual')}}">Individual</option>
                         <option value="{{route('register')}}">School</option>
                       </select>
                     </div>

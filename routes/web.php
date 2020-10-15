@@ -22,10 +22,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/selectform',function(){
-return view('auth.selectform');
-});
-Route::get('individual/register', function () {
+return view('selectform');
+})->name('selectform');
+Route::get('/individual/register', function () {
 return view('auth.individual');
-});
+})->name('individual');
 Route::get('/admin', [App\Http\Controllers\AdminController::class,'index'])->name('admin')->middleware('admin');
 Route::resource('/coupons', CouponsController::class)->middleware('admin');
