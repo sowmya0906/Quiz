@@ -28,8 +28,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+<div class="row">
+    <div class="col-sm">
+        {{ __('You are logged in as user ! and your unique id is    ') }}
+        {{Auth::user()->unique_id }}
 
+    </div>
+
+</div>
                         <div class="row">
+
                             <div class="col-sm-4">
                                 <div class="card">
                                     <div class="card-header">

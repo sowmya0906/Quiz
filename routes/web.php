@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CouponsController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +16,7 @@ use App\Http\Controllers\CouponsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('selectform');
 });
 
 Auth::routes();
@@ -27,5 +28,14 @@ return view('selectform');
 Route::get('/individual/register', function () {
 return view('auth.individual');
 })->name('individual');
+
+Route::get('/payment', [App\Http\Controllers\PaymentController::class,'index'])->name('payment');
+Route::get('/success', [App\Http\Controllers\PaymentController::class,'success']);
+Route::post('/payment', [App\Http\Controllers\PaymentController::class,'payment']);
+Route::get('/payment-page',function(){
+    return view('payments.payment-page');
+})->name('payment-page');
+
+Route::post('/pay' , [App\Http\Controllers\PaymentController::class,'pay']);
 Route::get('/admin', [App\Http\Controllers\AdminController::class,'index'])->name('admin')->middleware('admin');
 Route::resource('/coupons', CouponsController::class)->middleware('admin');

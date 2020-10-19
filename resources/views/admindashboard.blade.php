@@ -23,7 +23,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in as admin!') }}
+                    {{ __('You are logged in as admin! and your unique id is    ') }}
+                    {{Auth::user()->unique_id }}
                 </div>
             </div>
         </div>
