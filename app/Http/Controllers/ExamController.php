@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\quiz;
-use Illuminate\\Request;
+use Illuminate\Request;
 
 class ExamController extends Controller
 {
