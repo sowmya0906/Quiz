@@ -8,6 +8,8 @@
 <div class="card-header">{{_('Options')}}</div>
 <div class="card-body">
 <a href="{{route('coupons.index')}}">Create Coupons</a>
+<br><br>
+<a href="{{route('questions.index')}}">Create Questions</a>
 </div>
 </div>
 
@@ -23,7 +25,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in as admin! and your unique id is    ') }}
+                    {{ __('You are logged in as admin! and your unique id is ') }}
                     {{Auth::user()->unique_id }}
                 </div>
             </div>

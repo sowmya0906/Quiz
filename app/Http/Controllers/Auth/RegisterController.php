@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupons;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -31,6 +32,10 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo ='/payment';
+
+
+    //protected $redirectTo ='/login';
 
     /**
      * Create a new controller instance.
@@ -51,15 +56,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'name2' => ['required', 'string', 'max:255'],
+            'student1' => ['required', 'string', 'max:255'],
+            'student2' => ['required', 'string', 'max:255'],
 
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile_number'=>['required', 'string',  'min:1o', 'unique:users'],
-            'age'=>['required', 'string', 'min:2'],
+            'phone'=>['required', 'string',  'min:1o', 'unique:users'],
+            //'age'=>['required', 'string', 'min:2'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -69,27 +75,38 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
-        if(array_key_exists('coupon_code',$data)){
-            $abc=$data['coupon_code'];
+         //dd($data);
+        // if(array_key_exists('coupon_code',$data)){
+        //     $abc=$data['coupon_code'];
 
 
-                $type="school";
-                $org=$data['organisation'];
+        //         $type="school";
+        //         $org=$data['organisation'];
 
-        }
-        else{
-            $abc="no_coupon";
-            $type="individual";
-            $org="No_organisation";
-            // if($abc=="no_coupon"){
-            //     $type="individual";
-            // }
-            // else{
-            //     $type="school";
-            // }
-        }
+        //         // $coupon = Coupons::where('name',$org);
+
+        //         // $code = $coupon->coupon_name;
+
+        //         // if($code == $abc)
+        //         // return $code;
+
+
+
+        // }
+        // else{
+        //     $abc="no_coupon";
+        //     $type="individual";
+        //     $org="No_organisation";
+        //     // if($abc=="no_coupon"){
+        //     //     $type="individual";
+        //     // }
+        //     // else{
+        //     //     $type="school";
+        //     // }
+
+        // }
         # code...
+        // dd($data);
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $pin = mt_rand(9999, 10000)
@@ -100,20 +117,22 @@ class RegisterController extends Controller
     $unique_id = strtoupper(str_shuffle($pin));
 
 
-
         return User::create([
-            'name' => $data['name'],
-            'name2'=>$data['name2'],
+            'student1' => $data['student1'],
+            'student2'=>$data['student2'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'mobile_number'=>$data['mobile_number'],
-            'age'=>$data['age'],
-            'account_type'=>$type,
+            'phone'=>$data['phone'],
+            //'age'=>$data['age'],
+            //'account_type'=>$type,
             'unique_id'=>$unique_id,
-            'organisation_name'=>$org,
-            'coupon_code'=>$abc,
+            'school_name'=>$data['school_name'],
+            'category' =>$data['category'],
+            //'coupon_code'=>$abc,
 
 
         ]);
+       // $user->save();
+        return redirect(route('individual'))->with('message', 'Thanks for registering!');
     }
 }

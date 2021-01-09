@@ -68,15 +68,20 @@ document.getElementById('rzp-button1').onclick = function(e){
 </script>
 
 @if(Session::has('amount'))
-<div class="container tex-center">
+<div class="container text-center">
 <form action="/pay" method="POST">
+    <script>
+        $(window).on('load', function() {
+            jQuery('.razorpay-payment-button').click();
+           });
+        </script>
   <script
       src="https://checkout.razorpay.com/v1/checkout.js"
       data-key="rzp_test_JgGzOqLEVa9bEd"
 data-amount="{{Session::get('amount')}}"
       data-currency="INR"
 data-order_id="{{Session::get('order_id')}}"
-      data-buttontext="Pay with Razorpay"
+      data-buttontext="Pay with Razorpay (Test Mode Only)"
       data-name="{{Session::get('name')}}"
       data-description="Test transaction"
 

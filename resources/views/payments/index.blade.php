@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
                 <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Payment Page') }}</div>
+                <div class="card-header">{{ __('Confirm Details Page') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -24,18 +24,68 @@
                                     <form method="post" action="/payment">
                                       @csrf
                                         <div class="form-group">
-                                          <label for="exampleInputEmail1">Enter name</label>
-                                          <input type="text" name="name" class="form-control" placeholder="Enter your name">
+                                          <label for="exampleInputEmail1">Name</label>
+                                        <input type="hidden" name="student1" class="form-control" placeholder="Enter your name"  readonly>
+                                        {{-- <script>
+                                            document.write(localStorage.getItem('name'));
+                                            </script> --}}
                                              </div>
-                                        <div class="form-group">
-                                          <label for="exampleInputPassword1">Enter amount</label>
-                                          <input type="number" name="amount" class="form-control" id="exampleInputPassword1">
-                                        </div>
+                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Email</label>
+                                              <input type="hidden" name="email" class="form-control" placeholder="Enter your email"  readonly>
+                                              {{-- <script>
+                                                document.write(localStorage.getItem('email'));
+                                                </script> --}}
+                                                   </div>
 
-                                        <button type="submit"  class="btn btn-primary btn-block">Submit</button>
+                                        <div class="form-group">
+                                          <label for="exampleInputPassword1">Amount:200</label>
+                                          <input type="hidden" name="amount" class="form-control" value="1" id="exampleInputPassword1" readonly placeholder="200">
+
+                                        </div>
+                                        <script>
+                                            document.addEventListener('contextmenu', event => event.preventDefault());
+                                        </script>
+
+
+
+                                       <button type="submit"  class="btn btn-primary btn-block">Pay Now</button>
+                                      </form>
+                                      {{-- <script>
+                                        window.onload = function(){
+                                        var button = document.getElementsByClassName('razorpay-payment-button');
+                                        setInterval(function(){
+                                            button.click();
+                                        },1000);  // this will make it click again every 1000 miliseconds
+                                    };
+                                    </script> --}}
+
+                                    @if(Session::has('amount'))
+                                    <div class="container tex-center">
+                                    <form action="/pay" method="POST">
+                                        <script>
+                                            $(window).on('load', function() {
+                                                jQuery('.razorpay-payment-button').click();
+                                               });
+                                            </script>
+                                      <script
+                                          src="https://checkout.razorpay.com/v1/checkout.js"
+                                          data-key="rzp_test_JgGzOqLEVa9bEd"
+                                    data-amount="{{Session::get('amount')}}"
+                                          data-currency="INR"
+                                    data-order_id="{{Session::get('order_id')}}"
+                                          data-buttontext="Pay with Razorpay"
+                                          data-name="{{Session::get('name')}}"
+                                          data-description="Test transaction"
+
+                                          data-theme.color="#F37254"
+                                      ></script>
+                                      <input type="hidden" custom="Hidden Element" name="hidden">
                                       </form>
 
+                                    </div>
 
+                                    @endif
 
 
 

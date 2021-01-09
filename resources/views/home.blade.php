@@ -10,11 +10,12 @@
                 </div>
             </div>
             <div class="card-body">
-                <a href="">My exams</a>
+            <a href="{{url('/exams')}}">My exams <span style="color:navy;">{{ $total_count}}</span></a>
                 <br>
 
                 <a href="">My reports</a>
                 <br>
+
                 <a href="">Change password</a>
             </div>
         </div>
@@ -47,33 +48,11 @@
                                 <div class="card-body">
                                     <p>Consits of 25 questions</p>
                                     <br>
-                                  <a href="https://razorpay.com/">  <button type="button" class="btn btn-primary">Take test</button> </a>
+                                <a href="{{'/exampage'}}">  <button type="button" class="btn btn-primary">Take test</button> </a>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Exam 2
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p>Consits of 25 questions</p>
-                                    <br>
-                                  <a href="https://razorpay.com/">  <button type="button" class="btn btn-primary">Take test</button> </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Exam 3
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p>Consits of 25 questions</p>
-                                    <br>
-                                  <a href="https://razorpay.com/">  <button type="button" class="btn btn-primary">Take test</button> </a>
-                                </div>
-                            </div>
+
+
                         </div>
 
                     </div>
