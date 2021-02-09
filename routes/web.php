@@ -51,7 +51,7 @@ Route::get('/registerschool',[App\Http\Controllers\SchoolRegistrationDetailsCont
 
 Route::get('/payment', [App\Http\Controllers\PaymentController::class,'index'])->name('payment');
 Route::get('/success', [App\Http\Controllers\PaymentController::class,'success']);
-Route::post('/payment', [App\Http\Controllers\PaymentController::class,'payment']);
+// Route::post('/payment', [App\Http\Controllers\PaymentController::class,'payment']);
 Route::get('/payment-page',function(){
     return view('payments.payment-page');
 })->name('payment-page');
@@ -64,7 +64,7 @@ Route::resource('/questions', QuizController::class)->middleware('admin');
 
 Route::get('/exams',[App\Http\Controllers\QuizQuestionsController::class,'index'])->name('exams')->middleware('auth');
 
-Route::post('/exampage',[App\Http\Controllers\ExamController::class,'index'])->name('exampage')->middleware('auth');
+Route::get('/exampage',[App\Http\Controllers\ExamController::class,'index'])->name('exampage')->middleware('auth');
 
 
 

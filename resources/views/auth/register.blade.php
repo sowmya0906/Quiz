@@ -160,7 +160,7 @@ jQuery(document).ready(function () {
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="text" type="text" class="form-control @error('mobile_number') is-invalid @enderror" name="phone_number" value="{{ old('mobile_number') }}" required autocomplete="mobile_number">
+                                <input id="text" type="text" class="form-control @error('mobile_number') is-invalid @enderror" name="phone" value="{{ old('mobile_number') }}" required autocomplete="mobile_number">
 
                                 @error('mobile_number')
                                     <span class="invalid-feedback" role="alert">
@@ -261,6 +261,35 @@ jQuery(document).ready(function () {
 
                             </div>
                         </div>
+
+                        <?php
+
+                //         $secretKey = "d6d6a95a4e369745158bbbbb36b7adafc8a6918d";
+                //   $postData = array(
+                //   "appId" => '4944865a7886ab6298432226984494',
+                //   "orderId" => 'order00001',
+                //   "orderAmount" =>,
+                //   "orderCurrency" => 'INR',
+                //   "orderNote" => 'test',
+                //   "customerName" => 'John Doe',
+                //   "customerPhone" => '9999999999',
+                //   "customerEmail" => 'Johndoe@test.com',
+                //   "returnUrl" => 'http://127.0.0.1:8000/',
+                // );
+                 // get secret key from your config
+                //  ksort($postData);
+                //  $signatureData = "";
+                //  foreach ($postData as $key => $value){
+                //       $signatureData .= $key.$value;
+                //  }
+                //  $signature = hash_hmac('sha256', $signatureData, $secretKey,true);
+                //  $signature = base64_encode($signature);
+                 ?>
+
+                    <input type="hidden" name="signature" value="{{ Session()->get('siganture') }}                    "/>
+
+                            {{-- <input type="submit" value="Pay"> --}}
+
                     </form>
 
                 </div>
@@ -269,6 +298,8 @@ jQuery(document).ready(function () {
         </div>
     </div>
 </div>
-
+<script>
+alert({{ Session()->get('siganture') }} );
+    </script>
 
 @endsection

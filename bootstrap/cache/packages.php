@@ -38,6 +38,13 @@
       0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
+  'loveycom/cashfree' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'LoveyCom\\CashFree\\CashFreeServiceProvider',
+    ),
+  ),
   'maatwebsite/excel' => 
   array (
     'providers' => 

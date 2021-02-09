@@ -18,12 +18,14 @@
                             <div class="row">
                                 <div class="container mt-5 col-6 mx-auto pt-5">
 
+
                                     <div class="text-center">
                                     {{-- <img src="https://img.favpng.com/22/17/14/coffee-cup-breakfast-cafe-png-favpng-wum4UMesrHMdFxfe11NikwYbu.jpg" class="img-fluid" style="height:200px"> --}}
                                     </div>
-                                    <form method="post" action="/payment">
+                                    <form id="redirectForm" method="post" action="https://test.cashfree.com/billpay/checkout/post/submit">
                                       @csrf
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
+                                            <input type="hidden" name="appId" value="4944865a7886ab6298432226984494"/>
                                           <label for="exampleInputEmail1">Name</label>
                                         <input type="hidden" name="student1" class="form-control" placeholder="Enter your name"  readonly>
                                         {{-- <script>
@@ -38,18 +40,53 @@
                                                 </script> --}}
                                                    </div>
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                           <label for="exampleInputPassword1">Amount:200</label>
                                           <input type="hidden" name="amount" class="form-control" value="1" id="exampleInputPassword1" readonly placeholder="200">
 
                                         </div>
-                                        <script>
-                                            document.addEventListener('contextmenu', event => event.preventDefault());
-                                        </script>
+                                        <input type="hidden" name="returnUrl" value="http://127.0.0.1:8000/"/>
 
+                                        <input type="submit" value="Pay"> --}}
+{{--
+                                       <button type="submit"  class="btn btn-primary btn-block">Pay Now</button> --}}
+                                       <form id="redirectForm" method="post" action="/payment">
+                                        <input type="hidden" name="appId" value="4944865a7886ab6298432226984494"/>
+                                        <input type="hidden" name="orderId" value="order00001"/>
+                                        <input type="hidden" name="orderAmount" value="100"/>
+                                        <input type="hidden" name="orderCurrency" value="INR"/>
+                                        <input type="hidden" name="orderNote" value="test"/>
+                                        <input type="hidden" name="customerName" value="John Doe"/>
+                                        <input type="hidden" name="customerEmail" value="Johndoe@test.com"/>
+                                        <input type="hidden" name="customerPhone" value="9999999999"/>
+                                        <input type="hidden" name="returnUrl" value="http://127.0.0.1:8000/"/>
+                                      {{-- this has to be inserteed  --}}
+                                      <?php
+                                        $secretKey = "d6d6a95a4e369745158bbbbb36b7adafc8a6918d";
+                                  $postData = array(
+                                  "appId" => '4944865a7886ab6298432226984494',
+                                  "orderId" => 'order00001',
+                                  "orderAmount" => '100',
+                                  "orderCurrency" => 'INR',
+                                  "orderNote" => 'test',
+                                  "customerName" => 'John Doe',
+                                  "customerPhone" => '9999999999',
+                                  "customerEmail" => 'Johndoe@test.com',
+                                  "returnUrl" => 'http://127.0.0.1:8000/',
+                                );
+                                 // get secret key from your config
+                                 ksort($postData);
+                                 $signatureData = "";
+                                 foreach ($postData as $key => $value){
+                                      $signatureData .= $key.$value;
+                                 }
+                                 $signature = hash_hmac('sha256', $signatureData, $secretKey,true);
+                                 $signature = base64_encode($signature);
+                                 ?>
+                                    <input type="hidden" name="signature" value="<?php  echo $signature; ?>"/>
 
+                                            <input type="submit" value="Pay">
 
-                                       <button type="submit"  class="btn btn-primary btn-block">Pay Now</button>
                                       </form>
                                       {{-- <script>
                                         window.onload = function(){
@@ -60,7 +97,7 @@
                                     };
                                     </script> --}}
 
-                                    @if(Session::has('amount'))
+                                    {{-- @if(Session::has('amount'))
                                     <div class="container tex-center">
                                     <form action="/pay" method="POST">
                                         <script>
@@ -85,7 +122,7 @@
 
                                     </div>
 
-                                    @endif
+                                    @endif --}}
 
 
 
@@ -130,4 +167,9 @@
         </div>
     </div>
 </div>
+<script>
+// document.getElementById("redirectForm").submit();
+// window.location.reload();
+</script>
+
 @endsection

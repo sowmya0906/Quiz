@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0f5f6ec00d57a42015802add6898e2d",
+    "content-hash": "12cb83708ff187e0548429be536b5d9c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1348,6 +1348,50 @@
                 }
             ],
             "time": "2020-10-18T11:50:25+00:00"
+        },
+        {
+            "name": "loveycom/cashfree",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kayusgold/laravel-cashfree-api.git",
+                "reference": "4dacc30f37bf4b59516b523abb62149037911f68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kayusgold/laravel-cashfree-api/zipball/4dacc30f37bf4b59516b523abb62149037911f68",
+                "reference": "4dacc30f37bf4b59516b523abb62149037911f68",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LoveyCom\\CashFree\\CashFreeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LoveyCom\\CashFree\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kayode Omolaoye",
+                    "email": "kayodeomolaoye@gmail.com"
+                }
+            ],
+            "description": "A package for CashFree Payment Gateway.",
+            "support": {
+                "issues": "https://github.com/kayusgold/laravel-cashfree-api/issues",
+                "source": "https://github.com/kayusgold/laravel-cashfree-api/tree/v2.1.0"
+            },
+            "time": "2020-10-09T08:19:29+00:00"
         },
         {
             "name": "maatwebsite/excel",
@@ -7880,5 +7924,5 @@
         "php": "^7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

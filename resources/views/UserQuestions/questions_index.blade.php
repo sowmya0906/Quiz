@@ -14,6 +14,9 @@
                 <br>
 
                 <a href="">Change password</a>
+
+
+
             </div>
         </div>
         <div class="col-md-8">
@@ -41,12 +44,12 @@
                                     <p>Consits of 25 questions</p>
                                     <br>
                                 <form action="{{ route('exampage')}}" method="POST">
-                                        
-                                    @csrf  
+
+                                    @csrf
 
 @method('POST')
                                         <button class="btn btn-primary">Take Test</button>
-
+                                    {{Auth::user()->unique_id}}
                                     </form>
                                 {{-- <a href="{{route('exampage')}}">  <button type="button" class="btn btn-primary">Take test</button> </a> --}}
                                 </div>
